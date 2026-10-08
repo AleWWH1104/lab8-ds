@@ -119,7 +119,52 @@ generar los resultados principales.
 
 ## Como levantar el ambiente
 
-<!-- TODO (Ejercicio 1.5) -->
+Probado con Docker 28.5.1 y Docker Compose v2.40.3.
+
+1. Clonar el fork y entrar al proyecto:
+
+   ```bash
+   git clone https://github.com/<su-usuario>/duckdb.git
+   cd duckdb
+   ```
+
+2. Construir las imagenes y levantar los servicios en segundo plano (la primera
+   vez tarda varios minutos):
+
+   ```bash
+   docker compose up -d --build
+   ```
+
+3. Verificar que ambos contenedores esten en estado `Up`:
+
+   ```bash
+   docker compose ps
+   ```
+
+4. Abrir los servicios:
+
+   | Servicio   | URL                     | Verificacion                                         |
+   |------------|-------------------------|------------------------------------------------------|
+   | JupyterLab | <http://localhost:8888> | responde HTTP 200, sin token                         |
+   | Metabase   | <http://localhost:3000> | `curl http://localhost:3000/api/health` -> `{"status":"ok"}` (tarda ~1-2 min en iniciar) |
+
+5. Verificar DuckDB dentro del contenedor de analisis:
+
+   ```bash
+   docker compose exec lab python -c "import duckdb; print(duckdb.sql('select version()').fetchall())"
+   ```
+
+   Debe imprimir `[('v1.5.5',)]`.
+
+6. Para ejecutar scripts dentro del ambiente se usa `docker compose exec lab <comando>`.
+   Dentro del contenedor el proyecto vive en `/workspace`.
+
+7. Para detener el ambiente: `docker compose down` (los datos en `data/` y la
+   configuracion de Metabase en el volumen `metabase-data` se conservan).
+
+La descripcion de las herramientas disponibles, el proposito de cada directorio y
+la justificacion del ambiente reproducible estan en
+[docs/ej1_ambiente.md](docs/ej1_ambiente.md).
 
 ## Como descargar los datos
 
