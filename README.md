@@ -195,7 +195,13 @@ Detalle de los cambios al script y de la verificacion de completitud:
 
 ## Como ejecutar el analisis
 
-<!-- TODO -->
+Cada archivo de `sql/` se ejecuta con `scripts/run_sql.py`, que muestra los resultados y los puede guardar en markdown:
+
+```bash
+docker compose exec lab python scripts/run_sql.py sql/ej3_exploracion.sql --md docs/resultados/ej3_exploracion.md
+```
+
+Documentacion: [Ej. 3 exploracion](docs/ej3_exploracion.md).
 
 ## Como reproducir los benchmarks
 
