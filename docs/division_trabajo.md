@@ -5,7 +5,7 @@ El trabajo es secuencial: cada persona empieza cuando la anterior termina, porqu
 | Persona | Ejercicios | Puntos aprox. | Estado |
 |---|---|---|---|
 | 1 | 1, 2, 3 | 30 | Terminado |
-| 2 | 4, 5, 6 | 35 | Pendiente |
+| 2 | 4, 5, 6 | 35 | Terminado |
 | 3 | 7, 8, 9 y cierre | 35 | Pendiente |
 
 ## Antes de empezar
@@ -77,6 +77,24 @@ docker compose exec lab python scripts/download_data.py --anios 2024 2026 --veri
 - Datos de 2024 y 2026 descargados.
 - `data/processed/taxis.duckdb` creado y el comando para regenerarlo.
 - Consultas del Ej. 4 que se puedan reutilizar como indicadores.
+
+### Estado: terminado
+
+- Ej. 4: `sql/ej4_analisis.sql`, 12 preguntas y 5 hallazgos. Ver [ej4_analisis.md](ej4_analisis.md).
+- Ej. 5: 2024 descargado; `download_data.py` ahora baja 2024 y 2026 por defecto. Ver [ej5_incorporacion.md](ej5_incorporacion.md).
+- Ej. 6: `scripts/crear_tabla.py` y `scripts/benchmark.py`. Ver [ej6_benchmark.md](ej6_benchmark.md).
+
+Lo que queda listo para la Persona 3:
+
+- `data/processed/taxis.duckdb` (no esta en Git, se regenera con `docker compose exec lab python scripts/crear_tabla.py`). Tiene la tabla `viajes` (todos los anios descargados) y la vista `viajes_limpios` con el filtro base, mas `duracion_min`, `velocidad_mph` y `forma_pago`. Al agregar 2025 basta con volver a correr el script.
+- Las consultas de `sql/ej4_analisis.sql` sirven como indicadores: en Metabase se usan las mismas consultas pero sobre `viajes_limpios`, sin el bloque `-- 0`.
+- No correr `run_sql.py --db data/processed/taxis.duckdb` con los `.sql` de los Ej. 3 a 5: su bloque `-- 0` crea vistas dentro de la base. Esos archivos se corren sin `--db`.
+- Cuidados para los indicadores (ver 5.7 en [ej5_incorporacion.md](ej5_incorporacion.md)):
+  - agrupar o filtrar por `anio_archivo`, porque si se mezclan anios cambian los porcentajes (`cbd_congestion_fee` no existe antes de 2025);
+  - comparar anios con los mismos meses, porque 2026 solo tiene enero a agosto;
+  - en indicadores de ingresos agregar `total_amount < 1000`, porque hay un viaje de 335 mil USD en 2024;
+  - las propinas solo se pueden medir con `payment_type = 1` (tarjeta).
+- Si una consulta se queda sin memoria, usar `SET memory_limit = '4GB'` y `SET temp_directory`, y evitar `row_number()` sobre todas las columnas (ver 5.7).
 
 ## Persona 3: Tablero, datos de 2025 y cierre (Ej. 7, 8, 9)
 

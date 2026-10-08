@@ -208,7 +208,16 @@ Documentacion: [Ej. 3 exploracion](docs/ej3_exploracion.md), [Ej. 4 analisis](do
 
 ## Como reproducir los benchmarks
 
-<!-- TODO (Ejercicio 6) -->
+```bash
+# Tabla DuckDB materializada con todos los anios descargados -> data/processed/taxis.duckdb
+docker compose exec lab python scripts/crear_tabla.py
+
+# Benchmark Parquet vs tabla (1 mes, 2026, 2024 + 2026; 5 repeticiones)
+docker compose exec lab python scripts/benchmark.py
+```
+
+Las consultas del benchmark estan en `sql/ej6_benchmark.sql` y los tiempos se guardan en
+`docs/resultados/ej6_benchmark.csv`. Analisis: [docs/ej6_benchmark.md](docs/ej6_benchmark.md).
 
 ## Como generar los resultados principales
 
