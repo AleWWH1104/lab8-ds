@@ -2,14 +2,14 @@
 """Descarga los archivos Parquet del NYC TLC Trip Record Data.
 
 Descarga los registros de viajes de taxis amarillos (yellow) y verdes (green)
-para uno o varios anios. Por defecto descarga 2026, el conjunto inicial del
-laboratorio; los anios adicionales se agregan con --anios.
+para uno o varios anios. Por defecto descarga los anios que usa el laboratorio
+(ANIOS_POR_DEFECTO); otros anios se pueden pedir con --anios.
 
 Fuente oficial de los datos:
     https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
 
 Uso:
-    python scripts/download_data.py                          # 2026, amarillos y verdes
+    python scripts/download_data.py                          # 2024 y 2026, amarillos y verdes
     python scripts/download_data.py --anios 2024 2026        # varios anios
     python scripts/download_data.py --taxi yellow --anios 2025
     python scripts/download_data.py --verificar --anios 2026 # solo verifica, no descarga
@@ -38,7 +38,8 @@ from pathlib import Path
 
 import requests
 
-ANIOS_POR_DEFECTO = (2026,)
+# Ej. 5: se agrega 2024 al conjunto inicial de 2026.
+ANIOS_POR_DEFECTO = (2024, 2026)
 TIPOS_TAXI = ("yellow", "green")
 URL_BASE = "https://d37ci6vzurychx.cloudfront.net/trip-data"
 # Relativo a la raiz del proyecto, no al directorio desde el que se ejecuta.
