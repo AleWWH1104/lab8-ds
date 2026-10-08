@@ -51,7 +51,8 @@ FROM (SELECT *, {COLUMNAS_FECHA}
 
 SQL_VIAJES_LIMPIOS = """
 CREATE OR REPLACE VIEW viajes_limpios AS
-SELECT *,
+SELECT DISTINCT ON (tipo, VendorID, pickup, dropoff, PULocationID, DOLocationID, total_amount)
+       *,
        date_diff('second', pickup, dropoff) / 60.0 AS duracion_min,
        trip_distance / (date_diff('second', pickup, dropoff) / 3600.0) AS velocidad_mph,
        CASE payment_type
@@ -64,9 +65,6 @@ WHERE year(pickup) = anio_archivo AND month(pickup) = mes_archivo
   AND dropoff - pickup < INTERVAL 6 HOUR
   AND trip_distance > 0 AND trip_distance <= 100
   AND total_amount >= 0
-QUALIFY row_number() OVER (
-    PARTITION BY tipo, VendorID, pickup, dropoff, PULocationID, DOLocationID, total_amount
-    ORDER BY fare_amount) = 1
 """
 
 

@@ -171,7 +171,7 @@ la justificacion del ambiente reproducible estan en
 Con el ambiente levantado:
 
 ```bash
-# 2026, taxis amarillos y verdes (por defecto)
+# 2024 y 2026, taxis amarillos y verdes (por defecto)
 docker compose exec lab python scripts/download_data.py
 
 # Verificar que lo descargado este completo, sin descargar nada
@@ -182,7 +182,7 @@ Opciones:
 
 | Opcion | Descripcion |
 |---|---|
-| `--anios 2024 2026` | Uno o varios anios (por defecto `2026`) |
+| `--anios 2024 2026` | Uno o varios anios (por defecto `2024 2026`) |
 | `--taxi yellow\|green\|all` | Tipo de taxi (por defecto `all`) |
 | `--verificar` | Compara los archivos locales con los publicados por la TLC (firma Parquet y tamanio exacto); sale con codigo 1 si falta algo |
 
@@ -191,7 +191,8 @@ script es seguro: omite los archivos validos que ya existen, vuelve a descargar
 los corruptos y solo baja los meses nuevos.
 
 Detalle de los cambios al script y de la verificacion de completitud:
-[docs/ej2_descarga.md](docs/ej2_descarga.md).
+[docs/ej2_descarga.md](docs/ej2_descarga.md). Incorporacion de 2024:
+[docs/ej5_incorporacion.md](docs/ej5_incorporacion.md).
 
 ## Como ejecutar el analisis
 
@@ -199,9 +200,11 @@ Cada archivo de `sql/` se ejecuta con `scripts/run_sql.py`, que muestra los resu
 
 ```bash
 docker compose exec lab python scripts/run_sql.py sql/ej3_exploracion.sql --md docs/resultados/ej3_exploracion.md
+docker compose exec lab python scripts/run_sql.py sql/ej4_analisis.sql --md docs/resultados/ej4_analisis.md
+docker compose exec lab python scripts/run_sql.py sql/ej5_validacion.sql --md docs/resultados/ej5_validacion.md
 ```
 
-Documentacion: [Ej. 3 exploracion](docs/ej3_exploracion.md).
+Documentacion: [Ej. 3 exploracion](docs/ej3_exploracion.md), [Ej. 4 analisis](docs/ej4_analisis.md), [Ej. 5 incorporacion de 2024](docs/ej5_incorporacion.md).
 
 ## Como reproducir los benchmarks
 

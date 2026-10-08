@@ -5,6 +5,7 @@
 ```sql
 SET memory_limit = '4GB';
 SET preserve_insertion_order = false;
+SET temp_directory = 'data/processed/tmp';
 
 CREATE OR REPLACE VIEW yellow AS
 SELECT *,
@@ -38,7 +39,8 @@ SELECT 'green' AS tipo, anio_archivo, mes_archivo, VendorID,
 FROM green;
 
 CREATE OR REPLACE VIEW viajes_limpios AS
-SELECT *,
+SELECT DISTINCT ON (tipo, VendorID, pickup, dropoff, PULocationID, DOLocationID, total_amount)
+       *,
        date_diff('second', pickup, dropoff) / 60.0 AS duracion_min,
        trip_distance / (date_diff('second', pickup, dropoff) / 3600.0) AS velocidad_mph,
        CASE payment_type
@@ -50,10 +52,7 @@ WHERE year(pickup) = anio_archivo AND month(pickup) = mes_archivo
   AND dropoff > pickup
   AND dropoff - pickup < INTERVAL 6 HOUR
   AND trip_distance > 0 AND trip_distance <= 100
-  AND total_amount >= 0
-QUALIFY row_number() OVER (
-    PARTITION BY tipo, VendorID, pickup, dropoff, PULocationID, DOLocationID, total_amount
-    ORDER BY fare_amount) = 1;
+  AND total_amount >= 0;
 ```
 
 0 filas, 0.02 s
@@ -78,7 +77,7 @@ ORDER BY tipo DESC, anio;
 | green | 2024 | 12 | 2024-01 | 2024-12 |
 | green | 2026 | 8 | 2026-01 | 2026-08 |
 
-4 filas, 0.00 s
+4 filas, 0.01 s
 
 ## 5.5 Registros por tipo y anio segun metadatos y segun lectura de datos
 
@@ -171,7 +170,7 @@ ORDER BY tipo DESC, anio;
 | green | 2024 | 12 | 2008-12-31 00:00:00 | 2025-01-01 22:21:15 | 164 |
 | green | 2026 | 8 | 2008-12-31 17:35:31 | 2026-08-31 23:58:28 | 98 |
 
-4 filas, 0.31 s
+4 filas, 0.36 s
 
 ## 5.7 Columnas que no estan en todos los archivos
 
@@ -274,7 +273,7 @@ ORDER BY tipo DESC, anio;
 | green | 2024 | 660218 | 100 | 0 | 3.68 | 3.68 | 1,2 |
 | green | 2026 | 337114 | 0 | 0 | 14.47 | 14.47 | 1,2,6 |
 
-4 filas, 0.42 s
+4 filas, 0.41 s
 
 ## 5.7 Registros que conserva el filtro base por anio
 
@@ -293,4 +292,4 @@ ORDER BY b.tipo DESC, b.anio;
 | green | 2024 | 660218 | 621284 | 94.1 |
 | green | 2026 | 337114 | 323098 | 95.84 |
 
-4 filas, 6.27 s
+4 filas, 4.60 s
