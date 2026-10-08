@@ -168,7 +168,30 @@ la justificacion del ambiente reproducible estan en
 
 ## Como descargar los datos
 
-<!-- TODO (Ejercicios 2.6, 5.1 y 8.1) -->
+Con el ambiente levantado:
+
+```bash
+# 2026, taxis amarillos y verdes (por defecto)
+docker compose exec lab python scripts/download_data.py
+
+# Verificar que lo descargado este completo, sin descargar nada
+docker compose exec lab python scripts/download_data.py --verificar
+```
+
+Opciones:
+
+| Opcion | Descripcion |
+|---|---|
+| `--anios 2024 2026` | Uno o varios anios (por defecto `2026`) |
+| `--taxi yellow\|green\|all` | Tipo de taxi (por defecto `all`) |
+| `--verificar` | Compara los archivos locales con los publicados por la TLC (firma Parquet y tamanio exacto); sale con codigo 1 si falta algo |
+
+Los archivos se guardan en `data/raw/<tipo>/<anio>/`. Volver a ejecutar el
+script es seguro: omite los archivos validos que ya existen, vuelve a descargar
+los corruptos y solo baja los meses nuevos.
+
+Detalle de los cambios al script y de la verificacion de completitud:
+[docs/ej2_descarga.md](docs/ej2_descarga.md).
 
 ## Como ejecutar el analisis
 
