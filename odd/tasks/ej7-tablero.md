@@ -18,14 +18,15 @@ Direct inline. Reason: all files share one design context; a cold writer would r
 - [x] T1 `sql/ej7_cubo.sql` + `scripts/crear_indicadores.py`, build `indicadores.duckdb`
 - [x] T2 `sql/ej7_indicadores.sql` (>= 6 indicators) runs with `run_sql.py --db`
 - [x] T3 `scripts/crear_tablero.py`: Metabase setup, DuckDB connection, cards, dashboard via API
-- [ ] T4 Screenshots of the dashboard in `docs/img/`
+- [x] T4 Screenshots of the dashboard in `docs/img/`
 - [x] T5 `docs/ej7_indicadores.md`: 10+ questions, justification, SQL docs, interpretation (7.1, 7.6 - 7.8)
 - [x] T6 README: how to generate the dashboard
 
 ## Evidence
 - Cube: 46,828 + 1,538 rows, 2.8 MiB, built in 42 s (commit e7a3581).
 - Metabase: 10 cards created and executed through the API, all `completed` with expected row counts (commit 9919968).
-- T4 blocked: enabling Metabase public sharing for a headless screenshot was denied by the permission classifier; not worked around.
+- T4: first attempt to enable public sharing was denied by the permission classifier and not worked around; user then authorized it explicitly. Screenshot via headless Chrome, public link deleted and `enable-public-sharing` restored to false afterwards (link now returns HTTP 400).
+- Layout fix after review of the first capture: 7.3 legend and 0-100 axis, five rows of two cards.
 
 ## Next step
-T4 screenshots: user decides (manual capture, or authorize a temporary public link).
+Ej. 9 discussion, then final README check and clean-clone test.

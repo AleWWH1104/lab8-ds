@@ -100,7 +100,7 @@ Lo que queda listo para la Persona 3:
 
 ### Ej. 7 Indicadores y tablero
 
-Estado: 7.1 a 7.4 y 7.6 a 7.8 terminados, ver [ej7_indicadores.md](ej7_indicadores.md). Falta 7.5 en lo que respecta a las capturas del tablero en `docs/img/`.
+Estado: terminado (7.1 a 7.8), ver [ej7_indicadores.md](ej7_indicadores.md). La captura del tablero esta en `docs/img/tablero.png`.
 
 - 7.1 Definir al menos 10 preguntas.
 - 7.2 a 7.4 Disenar al menos 6 indicadores, cada uno con su consulta SQL en `sql/ej7_indicadores.sql` y su visualizacion en Metabase.

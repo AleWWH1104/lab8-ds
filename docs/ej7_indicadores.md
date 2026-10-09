@@ -63,9 +63,11 @@ El SQL de cada uno esta en `sql/ej7_indicadores.sql` y su resultado en `resultad
 
 ## 7.5 Tablero
 
-Las diez tarjetas estan en un solo tablero, "Taxis NYC 2024-2026", organizado en cinco filas: volumen (7.0, 7.1), patron horario e ingresos (7.2, 7.4), pagos, duracion y green (7.3, 7.6, 7.8), propinas y cargo de congestion (7.5, 7.7) y zonas (7.9). Cada tarjeta se verifico ejecutandola por la API de Metabase: las diez devuelven el numero de filas esperado y ninguna da error.
+Las diez tarjetas estan en un solo tablero, "Taxis NYC 2024-2026", organizado en cinco filas de dos: volumen (7.0, 7.1), patron horario e ingresos (7.2, 7.4), pagos y duracion (7.3, 7.6), propinas y cargo de congestion (7.5, 7.7), y participacion de green y zonas (7.8, 7.9). Cada tarjeta se verifico ejecutandola por la API de Metabase: las diez devuelven el numero de filas esperado y ninguna da error.
 
-Las capturas del tablero se guardan en `docs/img/`.
+![Tablero Taxis NYC 2024-2026 en Metabase](img/tablero.png)
+
+La captura se genero con Chrome sin interfaz sobre un enlace publico temporal del tablero, que se elimino al terminar (el ajuste `enable-public-sharing` de Metabase volvio a su valor por defecto, desactivado).
 
 ## 7.6 Justificacion de los indicadores
 
