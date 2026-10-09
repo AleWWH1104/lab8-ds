@@ -6,7 +6,7 @@ El trabajo es secuencial: cada persona empieza cuando la anterior termina, porqu
 |---|---|---|---|
 | 1 | 1, 2, 3 | 30 | Terminado |
 | 2 | 4, 5, 6 | 35 | Terminado |
-| 3 | 7, 8, 9 y cierre | 35 | Pendiente |
+| 3 | 7, 8, 9 y cierre | 35 | Ej. 7, 8 y 9 terminados; falta la prueba de cierre |
 
 ## Antes de empezar
 
@@ -110,7 +110,7 @@ Estado: terminado (7.1 a 7.8), ver [ej7_indicadores.md](ej7_indicadores.md). La 
 
 ### Ej. 8 Incorporar 2025
 
-Estado: 8.1 a 8.3 y 8.5 a 8.7 terminados, ver [ej8_incorporacion.md](ej8_incorporacion.md). Falta 8.4 (actualizar el tablero con los tres anios), que depende del Ej. 7.
+Estado: terminado (8.1 a 8.7), ver [ej8_incorporacion.md](ej8_incorporacion.md). 8.4 queda cubierto por el tablero del Ej. 7.
 
 ```bash
 docker compose exec lab python scripts/download_data.py --anios 2024 2025 2026
@@ -125,7 +125,7 @@ docker compose exec lab python scripts/download_data.py --anios 2024 2025 2026 -
 
 ### Ej. 9 Discusion
 
-Responder 9.1 a 9.8 en `docs/ej9_discusion.md`, usando lo que hicimos los tres.
+Terminado: las respuestas a 9.1 a 9.8 estan en [ej9_discusion.md](ej9_discusion.md).
 
 ### Cierre
 

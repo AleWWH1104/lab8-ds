@@ -62,7 +62,7 @@ Se ejecutaron `sql/ej3_exploracion.sql`, `sql/ej4_analisis.sql` y `sql/ej5_valid
 
 ## 8.4 Tablero
 
-Pendiente: se actualiza cuando exista el tablero del Ej. 7. Las consultas de `sql/ej8_evolucion.sql` ya estan escritas sobre `viajes_limpios` para usarlas como indicadores.
+El tablero del Ej. 7 se construyo despues de incorporar 2025, asi que ya muestra los tres anios: el cubo (`cubo_viajes`) contiene 2024, 2025 y 2026 y cada indicador separa una linea por anio. Ver [ej7_indicadores.md](ej7_indicadores.md) y la captura [img/tablero.png](img/tablero.png). Al agregar otro anio basta con regenerar `taxis.duckdb`, correr `scripts/crear_indicadores.py` y recargar el tablero.
 
 ## 8.5 Evolucion de los indicadores
 
