@@ -222,4 +222,19 @@ Las consultas del benchmark estan en `sql/ej6_benchmark.sql` y los tiempos se gu
 
 ## Como generar los resultados principales
 
-<!-- TODO -->
+Con los datos descargados y la tabla `taxis.duckdb` creada (ver las secciones anteriores):
+
+```bash
+# 1. Cubo de agregados que consume el tablero -> data/processed/indicadores.duckdb
+docker compose exec lab python scripts/crear_indicadores.py
+
+# 2. Indicadores del Ej. 7 (consultas y resultados en markdown)
+docker compose exec lab python scripts/run_sql.py sql/ej7_indicadores.sql --db data/processed/indicadores.duckdb --md docs/resultados/ej7_indicadores.md
+
+# 3. Tablero en Metabase (crea la conexion, las tarjetas y el tablero)
+docker compose exec lab python scripts/crear_tablero.py
+```
+
+El tablero queda en <http://localhost:3000/dashboard/2>. La primera vez el script crea el usuario local `admin@lab8.local` con clave `Lab8-duckdb-2026` (solo para este ambiente). Volver a ejecutarlo actualiza las tarjetas sin duplicarlas.
+
+Documentacion: [Ej. 7 indicadores y tablero](docs/ej7_indicadores.md). Evolucion entre anios: [Ej. 8](docs/ej8_incorporacion.md). Preguntas de discusion: `docs/ej9_discusion.md`.

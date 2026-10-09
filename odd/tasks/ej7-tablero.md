@@ -15,15 +15,17 @@ Direct inline. Reason: all files share one design context; a cold writer would r
 - Indicator SQL lives in `sql/ej7_indicadores.sql` and is the single source for the Metabase cards.
 
 ## Tasks
-- [ ] T1 `sql/ej7_cubo.sql` + `scripts/crear_indicadores.py`, build `indicadores.duckdb`
-- [ ] T2 `sql/ej7_indicadores.sql` (>= 6 indicators) runs with `run_sql.py --db`
-- [ ] T3 `scripts/crear_tablero.py`: Metabase setup, DuckDB connection, cards, dashboard via API
+- [x] T1 `sql/ej7_cubo.sql` + `scripts/crear_indicadores.py`, build `indicadores.duckdb`
+- [x] T2 `sql/ej7_indicadores.sql` (>= 6 indicators) runs with `run_sql.py --db`
+- [x] T3 `scripts/crear_tablero.py`: Metabase setup, DuckDB connection, cards, dashboard via API
 - [ ] T4 Screenshots of the dashboard in `docs/img/`
-- [ ] T5 `docs/ej7_indicadores.md`: 10+ questions, justification, SQL docs, interpretation (7.1, 7.6 - 7.8)
-- [ ] T6 README: how to generate the dashboard
+- [x] T5 `docs/ej7_indicadores.md`: 10+ questions, justification, SQL docs, interpretation (7.1, 7.6 - 7.8)
+- [x] T6 README: how to generate the dashboard
 
 ## Evidence
-(pending)
+- Cube: 46,828 + 1,538 rows, 2.8 MiB, built in 42 s (commit e7a3581).
+- Metabase: 10 cards created and executed through the API, all `completed` with expected row counts (commit 9919968).
+- T4 blocked: enabling Metabase public sharing for a headless screenshot was denied by the permission classifier; not worked around.
 
 ## Next step
-T1
+T4 screenshots: user decides (manual capture, or authorize a temporary public link).
