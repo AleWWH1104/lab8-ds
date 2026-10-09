@@ -9,8 +9,8 @@ Fuente oficial de los datos:
     https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
 
 Uso:
-    python scripts/download_data.py                          # 2024 y 2026, amarillos y verdes
-    python scripts/download_data.py --anios 2024 2026        # varios anios
+    python scripts/download_data.py                          # 2024, 2025 y 2026, amarillos y verdes
+    python scripts/download_data.py --anios 2024 2025        # varios anios
     python scripts/download_data.py --taxi yellow --anios 2025
     python scripts/download_data.py --verificar --anios 2026 # solo verifica, no descarga
 
@@ -38,8 +38,8 @@ from pathlib import Path
 
 import requests
 
-# Ej. 5: se agrega 2024 al conjunto inicial de 2026.
-ANIOS_POR_DEFECTO = (2024, 2026)
+# Ej. 5 agrego 2024 al conjunto inicial de 2026; Ej. 8 agrega 2025.
+ANIOS_POR_DEFECTO = (2024, 2025, 2026)
 TIPOS_TAXI = ("yellow", "green")
 URL_BASE = "https://d37ci6vzurychx.cloudfront.net/trip-data"
 # Relativo a la raiz del proyecto, no al directorio desde el que se ejecuta.

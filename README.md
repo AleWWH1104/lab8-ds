@@ -171,7 +171,7 @@ la justificacion del ambiente reproducible estan en
 Con el ambiente levantado:
 
 ```bash
-# 2024 y 2026, taxis amarillos y verdes (por defecto)
+# 2024, 2025 y 2026, taxis amarillos y verdes (por defecto)
 docker compose exec lab python scripts/download_data.py
 
 # Verificar que lo descargado este completo, sin descargar nada
@@ -182,7 +182,7 @@ Opciones:
 
 | Opcion | Descripcion |
 |---|---|
-| `--anios 2024 2026` | Uno o varios anios (por defecto `2024 2026`) |
+| `--anios 2024 2025 2026` | Uno o varios anios (por defecto `2024 2025 2026`) |
 | `--taxi yellow\|green\|all` | Tipo de taxi (por defecto `all`) |
 | `--verificar` | Compara los archivos locales con los publicados por la TLC (firma Parquet y tamanio exacto); sale con codigo 1 si falta algo |
 
