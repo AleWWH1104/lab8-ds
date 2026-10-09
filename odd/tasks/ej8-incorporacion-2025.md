@@ -13,13 +13,16 @@ Download script default years, data download and verification, table regeneratio
 - Env: Colima (`colima start --cpu 4 --memory 6 --disk 60`), docker context `colima`.
 
 ## Tasks
-- [ ] T1 Add 2025 to `ANIOS_POR_DEFECTO` in `scripts/download_data.py` and docstring (8.1)
-- [ ] T2 Download 2024-2026, run `--verificar`, rerun to prove nothing is re-downloaded (8.2)
-- [ ] T3 Regenerate `data/processed/taxis.duckdb` and rerun Ej. 3-5 SQL on three years (8.3)
-- [ ] T4 Write `docs/ej8_incorporacion.md` and update README / division_trabajo (8.7)
+- [x] T1 Add 2025 to `ANIOS_POR_DEFECTO` in `scripts/download_data.py` and docstring (8.1) - commit 550c0bd
+- [x] T2 Download 2024-2026, run `--verificar`, rerun to prove nothing is re-downloaded (8.2) - route: inline
+- [x] T3 Regenerate `data/processed/taxis.duckdb` and rerun Ej. 3-5 SQL on three years (8.3) - commit e5f1402
+- [x] T4 Write `docs/ej8_incorporacion.md` and update README / division_trabajo (8.5-8.7)
+- [ ] T5 Update dashboard with three years (8.4) - blocked on Ej. 7
 
 ## Evidence
-(pending)
+- Run 1: 64 downloaded, 0 failed. Run 2: 0 downloaded, 64 already existed. `--verificar`: 64 complete, 0 missing.
+- `crear_tabla.py`: 121,184,384 rows, 3,364 MiB. Ej. 3-5 SQL rerun with exit 0 and no error text in outputs.
+- Metadata row counts equal read row counts in all 6 groups.
 
 ## Next step
-T1
+Ej. 7 dashboard, then T5.

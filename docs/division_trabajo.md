@@ -108,6 +108,8 @@ Lo que queda listo para la Persona 3:
 
 ### Ej. 8 Incorporar 2025
 
+Estado: 8.1 a 8.3 y 8.5 a 8.7 terminados, ver [ej8_incorporacion.md](ej8_incorporacion.md). Falta 8.4 (actualizar el tablero con los tres anios), que depende del Ej. 7.
+
 ```bash
 docker compose exec lab python scripts/download_data.py --anios 2024 2025 2026
 docker compose exec lab python scripts/download_data.py --anios 2024 2025 2026 --verificar

@@ -192,7 +192,8 @@ los corruptos y solo baja los meses nuevos.
 
 Detalle de los cambios al script y de la verificacion de completitud:
 [docs/ej2_descarga.md](docs/ej2_descarga.md). Incorporacion de 2024:
-[docs/ej5_incorporacion.md](docs/ej5_incorporacion.md).
+[docs/ej5_incorporacion.md](docs/ej5_incorporacion.md). Incorporacion de 2025:
+[docs/ej8_incorporacion.md](docs/ej8_incorporacion.md).
 
 ## Como ejecutar el analisis
 
@@ -204,7 +205,7 @@ docker compose exec lab python scripts/run_sql.py sql/ej4_analisis.sql --md docs
 docker compose exec lab python scripts/run_sql.py sql/ej5_validacion.sql --md docs/resultados/ej5_validacion.md
 ```
 
-Documentacion: [Ej. 3 exploracion](docs/ej3_exploracion.md), [Ej. 4 analisis](docs/ej4_analisis.md), [Ej. 5 incorporacion de 2024](docs/ej5_incorporacion.md).
+Documentacion: [Ej. 3 exploracion](docs/ej3_exploracion.md), [Ej. 4 analisis](docs/ej4_analisis.md), [Ej. 5 incorporacion de 2024](docs/ej5_incorporacion.md), [Ej. 8 incorporacion de 2025](docs/ej8_incorporacion.md).
 
 ## Como reproducir los benchmarks
 
