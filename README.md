@@ -124,8 +124,8 @@ Probado con Docker 28.5.1 y Docker Compose v2.40.3.
 1. Clonar el fork y entrar al proyecto:
 
    ```bash
-   git clone https://github.com/<su-usuario>/duckdb.git
-   cd duckdb
+   git clone https://github.com/AleWWH1104/lab8-ds.git
+   cd lab8-ds
    ```
 
 2. Construir las imagenes y levantar los servicios en segundo plano (la primera
@@ -203,6 +203,7 @@ Cada archivo de `sql/` se ejecuta con `scripts/run_sql.py`, que muestra los resu
 docker compose exec lab python scripts/run_sql.py sql/ej3_exploracion.sql --md docs/resultados/ej3_exploracion.md
 docker compose exec lab python scripts/run_sql.py sql/ej4_analisis.sql --md docs/resultados/ej4_analisis.md
 docker compose exec lab python scripts/run_sql.py sql/ej5_validacion.sql --md docs/resultados/ej5_validacion.md
+docker compose exec lab python scripts/run_sql.py sql/ej8_evolucion.sql --md docs/resultados/ej8_evolucion.md
 ```
 
 Documentacion: [Ej. 3 exploracion](docs/ej3_exploracion.md), [Ej. 4 analisis](docs/ej4_analisis.md), [Ej. 5 incorporacion de 2024](docs/ej5_incorporacion.md), [Ej. 8 incorporacion de 2025](docs/ej8_incorporacion.md).
@@ -235,6 +236,6 @@ docker compose exec lab python scripts/run_sql.py sql/ej7_indicadores.sql --db d
 docker compose exec lab python scripts/crear_tablero.py
 ```
 
-El tablero queda en <http://localhost:3000/dashboard/2>. La primera vez el script crea el usuario local `admin@lab8.local` con clave `Lab8-duckdb-2026` (solo para este ambiente). Volver a ejecutarlo actualiza las tarjetas sin duplicarlas.
+Al terminar, el script imprime la URL del tablero (<http://localhost:3000/dashboard/N>). La primera vez el script crea el usuario local `admin@lab8.local` con clave `Lab8-duckdb-2026` (solo para este ambiente). Volver a ejecutarlo actualiza las tarjetas sin duplicarlas. Si se regenera `indicadores.duckdb` con Metabase abierto, reinicie Metabase (`docker compose restart metabase`) para que lea el archivo nuevo.
 
 Documentacion: [Ej. 7 indicadores y tablero](docs/ej7_indicadores.md). Evolucion entre anios: [Ej. 8](docs/ej8_incorporacion.md). Preguntas de discusion: `docs/ej9_discusion.md`.
